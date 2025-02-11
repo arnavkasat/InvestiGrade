@@ -8,13 +8,13 @@ This project implements a **real estate investment scoring model** that evaluate
 
 Each parameter is **normalized on a scale of 0 to 100** to ensure comparability.
 
-| **Parameter**                        | **Raw Value Example** | **Normalization Formula**                                      |
-| ------------------------------------ | --------------------- | -------------------------------------------------------------- |
-| **Property Price Growth (%)**        | 2% to 10%             | \(S = \frac{X - X_{min}}{X_{max} - X_{min}} \times 100\)       |
-| **Rental Yield (%)**                 | 3% to 10%             | \(S = \frac{X - X_{min}}{X_{max} - X_{min}} \times 100\)       |
-| **Crime Rate (Per 1,000 Residents)** | 2 to 15 crimes        | \(S = 100 - \frac{X - X_{min}}{X_{max} - X_{min}} \times 100\) |
-| **Proximity to Transit (Meters)**    | 100m to 2000m         | \(S = 100 - \frac{X - X_{min}}{X_{max} - X_{min}} \times 100\) |
-| **Population Growth (%)**            | 0.5% to 3%            | \(S = \frac{X - X_{min}}{X_{max} - X_{min}} \times 100\)       |
+| **Parameter** | **Raw Value Example** | **Normalization Formula** |
+|--------------|----------------------|---------------------------|
+| **Property Price Growth (%)** | 2% to 10% | $( S = \frac{X - X_{\min}}{X_{\max} - X_{\min}} \times 100  )$|
+| **Rental Yield (%)** | 3% to 10% | $( S = \frac{X - X_{\min}}{X_{\max} - X_{\min}} \times 100 )$ |
+| **Crime Rate (Per 1,000 Residents)** | 2 to 15 crimes | $( S = 100 - \frac{X - X_{\min}}{X_{\max} - X_{\min}} \times 100 )$ |
+| **Proximity to Transit (Meters)** | 100m to 2000m | $( S = 100 - \frac{X - X_{\min}}{X_{\max} - X_{\min}} \times 100 )$ |
+| **Population Growth (%)** | 0.5% to 3% | $( S = \frac{X - X_{\min}}{X_{\max} - X_{\min}} \times 100 )$ |
 
 ## Weighted Scoring Formula
 
