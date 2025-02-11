@@ -1,4 +1,4 @@
-# Real Estate Investment Scoring Model
+# InvestiGrade
 
 ## Overview
 
