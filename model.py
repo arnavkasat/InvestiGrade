@@ -1,7 +1,8 @@
 import pandas as pd
 
-def normalize(value, min_value, max_value, invert=False):
-    """Normalizes a value between 0 and 100."""
+def normalize(value, data_series, invert=False):
+    """Dynamically normalizes a value between 0 and 100 based on min and max of dataset."""
+    min_value, max_value = data_series.min(), data_series.max()
     score = (value - min_value) / (max_value - min_value) * 100
     return 100 - score if invert else score
 
@@ -15,11 +16,11 @@ def calculate_investment_score(data):
         'population_growth': 0.1
     }
     
-    data['price_growth_norm'] = normalize(data['price_growth'], 2, 10)
-    data['rental_yield_norm'] = normalize(data['rental_yield'], 3, 10)
-    data['crime_rate_norm'] = normalize(data['crime_rate'], 2, 15, invert=True)
-    data['proximity_transit_norm'] = normalize(data['proximity_transit'], 100, 2000, invert=True)
-    data['population_growth_norm'] = normalize(data['population_growth'], 0.5, 3)
+    data['price_growth_norm'] = data['price_growth'].apply(lambda x: normalize(x, data['price_growth']))
+    data['rental_yield_norm'] = data['rental_yield'].apply(lambda x: normalize(x, data['rental_yield']))
+    data['crime_rate_norm'] = data['crime_rate'].apply(lambda x: normalize(x, data['crime_rate'], invert=True))
+    data['proximity_transit_norm'] = data['proximity_transit'].apply(lambda x: normalize(x, data['proximity_transit'], invert=True))
+    data['population_growth_norm'] = data['population_growth'].apply(lambda x: normalize(x, data['population_growth']))
     
     data['final_score'] = (
         data['price_growth_norm'] * weights['price_growth'] +
